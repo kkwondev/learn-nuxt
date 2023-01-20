@@ -21,6 +21,9 @@
           <span>{{ product.price }}</span>
         </li>
       </ul>
+      <div class="cart-wrapper">
+        <button class="btn" @click="moveToCartPage">장바구니 바로가기</button>
+      </div>
     </main>
   </div>
 </template>
@@ -49,6 +52,9 @@ export default {
     moveToDetailPage(id) {
       this.$router.push(`detail/${id}`)
     },
+    moveToCartPage() {
+      this.$router.push('cart')
+    },
     async searchProducts() {
       const { data } = await fetchProductByKeyword(this.searchKeyword)
       this.products = data.map((item) => {
@@ -70,10 +76,11 @@ export default {
 .item {
   display: inline-block;
   width: 400px;
-  height: 300px;
+  /* height: 300px; */
   text-align: center;
   margin: 0 0.5rem;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 .product-image {
   width: 400px;

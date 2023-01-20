@@ -5,6 +5,7 @@
       <img :src="product.imageUrl" :alt="product.name" />
       <p>name : {{ product.name }}</p>
       <p>price : {{ product.price }}</p>
+      <button type="button" @click="addToCart">Add to Cart</button>
     </div>
   </div>
 </template>
@@ -22,6 +23,11 @@ export default {
   //     const id = this.$route.params.id
   //     fetchProductById(id)
   //   },
+  methods: {
+    addToCart() {
+      this.$router.push('/cart')
+    },
+  },
 }
 </script>
 
