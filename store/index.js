@@ -1,4 +1,4 @@
-import { fetchCarts } from '~/api'
+import { createCartItem, fetchCarts } from '~/api'
 
 export const state = () => ({
   cartItems: [],
@@ -24,5 +24,10 @@ export const actions = {
       imageUrl: `${item.imageUrl}?random=${Math.random()}`,
     }))
     context.commit('setCarts', items)
+  },
+  async addCartItem(context, cartItem) {
+    await createCartItem(cartItem)
+
+    context.commit('addCartItems', cartItem)
   },
 }
