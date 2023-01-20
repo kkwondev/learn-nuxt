@@ -33,4 +33,7 @@ export const actions = {
 
     context.commit('addCartItem', cartItem)
   },
+  async nuxtServerInit(storeContext, nuxtContext) {
+    await storeContext.dispatch(FETCH_CART_ITEMS)
+  },
 }
