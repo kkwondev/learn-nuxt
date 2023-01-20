@@ -5,7 +5,12 @@
         <input type="text" />
       </div>
       <ul>
-        <li class="flex item" v-for="product in products" :key="product.id">
+        <li
+          v-for="product in products"
+          :key="product.id"
+          class="flex item"
+          @click="moveToDetailPage(product.id)"
+        >
           <img
             class="product-image"
             :src="product.imageUrl"
@@ -33,8 +38,12 @@ export default {
     })
     return { products }
   },
-  // data() {},
-  // async created() {},
+  methods: {
+    moveToDetailPage(id) {
+      console.log(id)
+      this.$router.push(`detail/${id}`)
+    },
+  },
 }
 </script>
 
