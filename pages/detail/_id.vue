@@ -19,6 +19,7 @@
 
 <script>
 import { fetchProductById } from '@/api/index'
+import { ADD_CART_ITEM } from '~/store'
 export default {
   async asyncData({ params }) {
     const id = params.id
@@ -32,7 +33,7 @@ export default {
   //   },
   methods: {
     addToCart() {
-      this.$store.dispatch('addCartItem', this.product)
+      this.$store.dispatch(ADD_CART_ITEM, this.product)
       this.$router.push('/cart')
     },
   },

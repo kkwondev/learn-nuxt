@@ -1,5 +1,8 @@
 import { createCartItem, fetchCarts } from '~/api'
 
+export const FETCH_CART_ITEMS = 'FETCH_CART_ITEMS'
+export const ADD_CART_ITEM = 'ADD_CART_ITEM'
+
 export const state = () => ({
   cartItems: [],
 })
@@ -17,7 +20,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchCarts(context) {
+  async [FETCH_CART_ITEMS](context) {
     const { data } = await fetchCarts()
     const items = data.map((item) => ({
       ...item,
@@ -25,9 +28,9 @@ export const actions = {
     }))
     context.commit('setCarts', items)
   },
-  async addCartItem(context, cartItem) {
+  async [ADD_CART_ITEM](context, cartItem) {
     await createCartItem(cartItem)
 
-    context.commit('addCartItems', cartItem)
+    context.commit('addCartItem', cartItem)
   },
 }
