@@ -36,7 +36,13 @@ export default {
   build: {
     transpile: ['axios'],
   },
+
+  buildModules: ['@nuxtjs/dotenv'],
   server: {
     port: 8000,
+  },
+
+  env: {
+    baseURL: process.env.API_DOMAIN,
   },
 }
